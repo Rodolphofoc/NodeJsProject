@@ -4,10 +4,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const router = express.Router();
+const config = require('./config');
 
 //rotas
 const indexRoute = require('./routes/index');
-const accessRoute = require('./routes/AccessRoute');
+const loginRoute = require('./routes/loginRoute');
 
 app.use(bodyParser.json({
     limit: '5mb'
@@ -25,6 +26,6 @@ app.use(function (req, res, next) {
 });
 
 app.use('/healthcheck', indexRoute);
-app.use('/access', accessRoute);
+app.use('/login', loginRoute);
 
 module.exports = app;
