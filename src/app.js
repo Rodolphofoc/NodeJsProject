@@ -5,6 +5,14 @@ const bodyParser = require('body-parser');
 const app = express();
 const router = express.Router();
 const config = require('./config');
+const mongoose = require('mongoose');
+
+// Connecta ao banco
+mongoose.connect(config.connectionString);
+
+// Carrega os Models
+const User = require('./models/user');
+
 
 //rotas
 const indexRoute = require('./routes/index');

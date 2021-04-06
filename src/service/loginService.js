@@ -1,18 +1,17 @@
 'use strict';
 
-// const repository = require('../repositories/AccessRepository');
 const jwt = require('jsonwebtoken');
+const repository = require('../repositories/userRepository');
 
 
 exports.authenticate = async (data) => {
     try {
 
-        const res = {
-            id: 1,
-            email: 'Email',
-            name: 'Rodolpho'
-        };
-        return res;
+        if (!data.email || !data.password) {
+            return;
+        }
+
+        return repository.authenticate(data);
 
     } catch (e) {
         return {

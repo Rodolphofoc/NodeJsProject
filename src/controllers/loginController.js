@@ -11,7 +11,6 @@ exports.get = (req, res, next) => {
 exports.post = async (req, res, next) => {
 
     try {
-
         var user = await loginService.authenticate({
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY)
@@ -40,8 +39,6 @@ exports.post = async (req, res, next) => {
     catch (e) {
         res.status(500).send('Algo de errado aconteceu');
     }
-
-
 };
 
 exports.put = (req, res, next) => {
